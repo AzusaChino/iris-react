@@ -1,18 +1,32 @@
-import { AUTH } from "./actions";
+import { AnyAction, Reducer } from "redux";
+import { User } from "../models/user";
+import * as constants from "./constants";
 
-const initState = {
+interface LoginInfo {
+  isAuthed: boolean;
+  user: User;
+}
+
+const initState: LoginInfo = {
   isAuthed: false,
-  user: null,
+  user: {
+    username: "",
+    password: "",
+    avatar: "",
+  },
 };
 
-const reducer = (state = initState, action: any) => {
-  if (action.type === AUTH) {
-    return {
-      isAuthed: action.payload.isAuthed,
-      user: action.payload.user,
-    };
+const reducer: Reducer = (state: LoginInfo = initState, action: AnyAction) => {
+  switch (action.type) {
+    case constants.LOGIN:
+      return {
+        ...action.payload,
+      };
+    case constants.LOGOUT:
+      return {
+        ...action.payload,
+      };
   }
-  return state;
 };
 
 export default reducer;

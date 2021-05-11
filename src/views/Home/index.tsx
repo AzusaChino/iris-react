@@ -1,13 +1,9 @@
 import React, { CSSProperties } from "react";
 import { Carousel, Card, Col, Row } from "antd";
+import { queryList } from "../../api";
+import { Article } from "../../models/article";
 
 const { Meta } = Card;
-
-const sampleList: Array<{ name: string }> = [
-  { name: "1" },
-  { name: "2" },
-  { name: "3" },
-];
 
 const contentStyle: CSSProperties = {
   height: "160px",
@@ -21,18 +17,31 @@ interface CarouselInterface {
   name: string;
 }
 
-interface CardInterface {
-  src: string;
-}
+const defaultCarouseList: Array<CarouselInterface> = [
+  { name: "1" },
+  { name: "2" },
+  { name: "3" },
+];
 
 class Home extends React.Component<
   {},
-  { carouselList: Array<CarouselInterface>; cardList: Array<CardInterface> }
+  { carouselList: Array<CarouselInterface>; cardList: Array<Article> }
 > {
   state = {
-    carouselList: [{ name: "" }],
-    cardList: [{ src: "" }],
+    carouselList: defaultCarouseList,
+    cardList: new Array<Article>(),
   };
+
+  componentDidMount() {
+    queryList().then((res) => {
+      const { data } = res;
+      if (data.code === 200) {
+        this.setState({
+          cardList: data.data,
+        });
+      }
+    });
+  }
 
   render() {
     const { carouselList, cardList } = this.state;
@@ -54,49 +63,12 @@ class Home extends React.Component<
                 <Card
                   hoverable
                   style={{ width: 240 }}
-                  cover={<img alt={c.src} src={c.src} />}
+                  cover={<img alt={c.title} src={c.pic} />}
                 >
-                  <Meta title={c.src} description={c.src} />
+                  <Meta title={c.title} description={c.remark} />
                 </Card>
               </Col>
             ))}
-            <Col span={8}>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                  />
-                }
-              >
-                <Meta
-                  title="Europe Street beat"
-                  description="www.instagram.com"
-                />
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="CardTitle" bordered={false}>
-                Card Content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="CardTitle" bordered={false}>
-                Card Content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="CardTitle" bordered={false}>
-                Card Content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="CardTitle" bordered={false}>
-                Card Content
-              </Card>
-            </Col>
           </Row>
         </div>
       </div>
