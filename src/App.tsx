@@ -1,7 +1,13 @@
 import React from "react";
 import { routers, routes } from "./router";
 import store from "./store";
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Switch,
+  Route,
+  RouteProps,
+} from "react-router-dom";
 import { Button, Layout, Menu } from "antd";
 import "./App.css";
 import { Provider } from "react-redux";
@@ -35,7 +41,7 @@ class App extends React.Component {
               <Content style={{ padding: "0 50px" }}>
                 <div className="layout-content">
                   <Switch>
-                    {routes.map((route) => (
+                    {routes.map((route: RouteProps) => (
                       <Route {...route} />
                     ))}
                   </Switch>

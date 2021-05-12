@@ -16,3 +16,9 @@ export function queryList(): Promise<
 > {
   return req.get("/articles");
 }
+
+export function queryDetail(
+  id: string
+): Promise<AxiosResponse<RestResponse<Article>>> {
+  return req.get(`/article/${id}`);
+}

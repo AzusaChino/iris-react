@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import { Carousel, Card, Col, Row } from "antd";
+import { Link } from "react-router-dom";
 import { queryList } from "../../api";
 import { Article } from "../../models/article";
 
@@ -60,13 +61,15 @@ class Home extends React.Component<
           <Row gutter={16}>
             {cardList.map((c) => (
               <Col span={8}>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={<img alt={c.title} src={c.pic} />}
-                >
-                  <Meta title={c.title} description={c.remark} />
-                </Card>
+                <Link to={`/article/${c.id}`}>
+                  <Card
+                    hoverable
+                    style={{ width: 240 }}
+                    cover={<img alt={c.title} src={c.pic} />}
+                  >
+                    <Meta title={c.title} description={c.remark} />
+                  </Card>
+                </Link>
               </Col>
             ))}
           </Row>

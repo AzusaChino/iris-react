@@ -3,6 +3,8 @@ import { RouteProps } from "react-router-dom";
 import Home from "../views/Home";
 import About from "../views/About";
 import Demo from "../views/Demo";
+import NotFound from "../views/NotFound";
+import ArticleDetail from "../components/ArticleDetail";
 
 /**
  * Link
@@ -44,5 +46,13 @@ export const routes: Array<RouteProps> = [
   {
     path: "/demo",
     component: Demo,
+  },
+  {
+    path: "/article/:id",
+    component: ArticleDetail,
+  },
+  {
+    path: "*",
+    component: NotFound,
   },
 ];

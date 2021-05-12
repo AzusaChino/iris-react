@@ -7,7 +7,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
-    return config;
+    return Promise.resolve(config);
   },
   (error) => {
     return Promise.reject(error);
@@ -16,7 +16,7 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (res) => {
-    return res;
+    return Promise.resolve(res);
   },
   (error) => {
     return Promise.reject(error);
