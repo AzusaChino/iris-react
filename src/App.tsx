@@ -1,43 +1,22 @@
 import React from "react";
-import { routers, routes } from "./router";
+import { routes } from "./router";
 import store from "./store";
-import {
-  BrowserRouter,
-  Link,
-  Switch,
-  Route,
-  RouteProps,
-} from "react-router-dom";
-import { Button, Layout, Menu } from "antd";
+import { BrowserRouter, Switch, Route, RouteProps } from "react-router-dom";
+import { Layout } from "antd";
 import "./App.css";
 import { Provider } from "react-redux";
+import HeaderItem from "./components/HeaderItem";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 class App extends React.Component {
-  login() {}
-
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <BrowserRouter>
             <Layout className="layout">
-              <Header>
-                <div className="logo" />
-                <div className="login">
-                  <Button ghost onClick={this.login}>
-                    登录
-                  </Button>
-                </div>
-                <Menu theme="dark" mode="horizontal">
-                  {routers.map((router) => (
-                    <Menu.Item key={router.key}>
-                      <Link to={router.to}>{router.name}</Link>
-                    </Menu.Item>
-                  ))}
-                </Menu>
-              </Header>
+              <HeaderItem />
               <Content style={{ padding: "0 50px" }}>
                 <div className="layout-content">
                   <Switch>

@@ -2,6 +2,8 @@ import * as constants from "./constants";
 import { login as doLogin } from "../api";
 import { Dispatch } from "react";
 
+// An action is a plain JavaScript object that has a type field. You can think of an action as an event that describes something that happened in the application.
+
 export const _login = (username: string, password: string) => {
   return (dispatch: Dispatch<any>) => {
     doLogin({ username, password }).then((res) => {

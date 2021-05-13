@@ -1,6 +1,15 @@
-import { createStore } from "redux";
-import reducer from "./reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import rootReducer from "./reducer";
 
-const store = createStore(reducer);
+const preloadedState = {};
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== "production",
+  preloadedState,
+  enhancers: [],
+});
 
 export default store;
