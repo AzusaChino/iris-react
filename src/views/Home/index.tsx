@@ -1,27 +1,29 @@
-import React, { CSSProperties } from "react";
-import { Carousel, Card, Col, Row } from "antd";
+import React from "react";
+import { Carousel, Card, Col, Row, Image } from "antd";
 import { Link } from "react-router-dom";
 import { queryList } from "../../api";
 import { Article } from "../../models/article";
 
 const { Meta } = Card;
 
-const contentStyle: CSSProperties = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
-
 interface CarouselInterface {
   name: string;
+  src?: string;
 }
 
 const defaultCarouseList: Array<CarouselInterface> = [
-  { name: "1" },
-  { name: "2" },
-  { name: "3" },
+  {
+    name: "1",
+    src: "https://www.robinwieruch.de/static/9b13b3546c675d6f1a1e565f5185cab6/9842e/banner.jpg",
+  },
+  {
+    name: "2",
+    src: "https://www.robinwieruch.de/static/2dff2796f080f8ebf86e6ada12297ad2/9842e/banner.jpg",
+  },
+  {
+    name: "3",
+    src: "https://www.robinwieruch.de/static/6ffd0d9caf67596d3e848c9150d7fa54/9842e/banner.jpg",
+  },
 ];
 
 class Home extends React.Component<
@@ -52,7 +54,7 @@ class Home extends React.Component<
         <Carousel autoplay>
           {carouselList.map((s) => (
             <div>
-              <h3 style={contentStyle}>{s.name}</h3>
+              <Image src={s.src} width={600} />
             </div>
           ))}
         </Carousel>
@@ -65,7 +67,7 @@ class Home extends React.Component<
                   <Card
                     hoverable
                     style={{ width: 240 }}
-                    cover={<img alt={c.title} src={c.pic} />}
+                    cover={<Image src={c.pic} />}
                   >
                     <Meta title={c.title} description={c.remark} />
                   </Card>

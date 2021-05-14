@@ -9,7 +9,7 @@ const NotFound: React.FC = (): JSX.Element => (
     extra={
       <Link to="/">
         <Button type="primary" key="console">
-          Go Console
+          Go Home
         </Button>
       </Link>
     }

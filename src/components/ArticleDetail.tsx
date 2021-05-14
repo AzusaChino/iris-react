@@ -4,6 +4,7 @@ import { queryDetail } from "../api";
 import { RouteComponentProps } from "react-router";
 import { Typography, Image } from "antd";
 import RecentArticle from "./RecentArticle";
+import CommentBlock from "./CommentBlock";
 
 const { Title, Paragraph } = Typography;
 
@@ -35,6 +36,9 @@ const ArticleDetail = ({ match }: RouteComponentProps<Param>) => {
         <Image width={360} src={article?.pic} />
         <Paragraph>{article?.content}</Paragraph>
       </Typography>
+      <div>
+        <CommentBlock articleId={id} />
+      </div>
     </div>
   );
 };
