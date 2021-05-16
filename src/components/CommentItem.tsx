@@ -10,7 +10,7 @@ const CommentItem = (props: CommentProps) => {
   const { comment } = props;
 
   return (
-    <div>
+    <div style={{ margin: "auto" }}>
       <div className="">
         <Avatar src={comment.avatar} />
         <span>{comment.username}</span>

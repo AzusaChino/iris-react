@@ -17,7 +17,7 @@ const ArticleDetail = ({ match }: RouteComponentProps<Param>) => {
 
   const { id } = match.params;
 
-  // 我们将给 useEffect 传第二个空数组的参数，来实现这个效果：只在组件mount的时候，调用 useEffect 函数。
+  // 我们将给 useEffect 传第二个空数组的参数，来实现这个效果：仅在组件mount的时候，调用 useEffect 函数。
   useEffect(() => {
     const fetchDetail = async () => {
       const result = await queryDetail(id);

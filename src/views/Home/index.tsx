@@ -7,21 +7,17 @@ import { Article } from "../../models/article";
 const { Meta } = Card;
 
 interface CarouselInterface {
-  name: string;
-  src?: string;
+  src: string;
 }
 
 const defaultCarouseList: Array<CarouselInterface> = [
   {
-    name: "1",
-    src: "https://www.robinwieruch.de/static/9b13b3546c675d6f1a1e565f5185cab6/9842e/banner.jpg",
+    src: "https://www.robinwieruch.de/static/0f316719f2e0f56d67ff4550f4747467/9842e/banner.jpg",
   },
   {
-    name: "2",
     src: "https://www.robinwieruch.de/static/2dff2796f080f8ebf86e6ada12297ad2/9842e/banner.jpg",
   },
   {
-    name: "3",
     src: "https://www.robinwieruch.de/static/6ffd0d9caf67596d3e848c9150d7fa54/9842e/banner.jpg",
   },
 ];
