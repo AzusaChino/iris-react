@@ -1,7 +1,8 @@
 import axios from "axios";
+import { BASE_URL } from "../common";
 
 const request = axios.create({
-  baseURL: process.env.BASE_URL || "http://127.0.0.1:7878",
+  baseURL: BASE_URL,
   timeout: 5000,
 });
 
